@@ -1,0 +1,27 @@
+
+html
+{ height: 100%;}
+
+*
+{ margin: 0px;
+  padding: 0px;
+}
+
+body{
+    font: normal .80em 'trebuchet ms', arial, sans-serif;
+    background-image:url(../images/samdlogo.png);
+    background-size: 320px 120px;
+    background-repeat:repeat;
+    color: white;
+    text-align: center;
+}
+
+#contenedor{
+    width: 85%;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
