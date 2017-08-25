@@ -27,6 +27,28 @@ public class MenuBeanAlumno {
         fachada = Fachada.getInstancia();
         menuAlumno = new DefaultMenuModel();
 
+    //Menu Usuario
+     DefaultSubMenu menuUsuario = new DefaultSubMenu("Usuario"); 
+     menuUsuario.setIcon("ui-icon-person");
+     
+     DefaultMenuItem cambiarClave = new DefaultMenuItem("Cambiar Contraseña");
+     cambiarClave.setIcon("ui-icon-key");
+     cambiarClave.setUrl("/Views/cambiarContrasenia.xhtml");
+     
+     DefaultMenuItem cerrarSesion = new DefaultMenuItem("Cerrar Sesión");
+     cerrarSesion.setIcon("ui-icon-circlesmall-close");
+     cerrarSesion.setCommand("#{inicioSesionBean.cerrarSesion()}");
+     
+     
+     menuUsuario.addElement(cambiarClave);
+     menuUsuario.addElement(cerrarSesion);
+             
+     
+     menuAlumno.addElement(menuUsuario);
+   
+          
+//*******************************************************************************************************        
+        
         //Menu Teórico
         DefaultSubMenu menuTeorico = new DefaultSubMenu("Teórico");
 
@@ -60,8 +82,39 @@ public class MenuBeanAlumno {
             menuPractico.addElement(itemPractico);
         }
 
-        menuAlumno.addElement(menuPractico);
+        menuAlumno.addElement(menuPractico);    
+        
+ //*****************************************************************************************************   
+    
+    //Menu Calificaciones
+    
+
+     DefaultSubMenu menuCalificaciones = new DefaultSubMenu("Calificaciones"); 
+     menuCalificaciones.setIcon("ui-icon-person");
+     
+     DefaultMenuItem verPromedio = new DefaultMenuItem("Cambiar Contraseña");
+     verPromedio.setIcon("ui-icon-pencil");
+     verPromedio.setUrl("#");
+     
+     DefaultMenuItem verPorTema = new DefaultMenuItem("Ver Calificaciones Por Tema");
+     verPorTema.setIcon("ui-icon-pencil");
+     verPorTema.setCommand("#");
+     
+     menuCalificaciones.addElement(verPromedio);
+     menuCalificaciones.addElement(verPorTema);
+     
+     
+     
+     menuAlumno.addElement(menuCalificaciones);
+     
+     
+     
+     
 
     }
+    
+             
+     
+    
 
 }

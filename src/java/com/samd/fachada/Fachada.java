@@ -158,6 +158,11 @@ public class Fachada {
         return teoricoDao.listarTeoricos();
     }
 
+    public List<Teorico> listarTeoricosPorId(int id) throws PersistenciaExcepcion {
+        TeoricoDao teoricoDao = new TeoricoDaoImp();
+        return teoricoDao.listarTeoricosPorId(id);
+    }
+
     public void eliminarTeorico(Teorico teorico) throws PersistenciaExcepcion {
         TeoricoDao teoricoDao = new TeoricoDaoImp();
         teoricoDao.eliminarTeorico(teorico);

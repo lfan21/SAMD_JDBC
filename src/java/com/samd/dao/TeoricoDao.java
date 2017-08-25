@@ -22,4 +22,6 @@ public interface TeoricoDao {
     
     public Teorico retornarTeoricoPorId (int numero) throws PersistenciaExcepcion;
     
+    public List<Teorico> listarTeoricosPorId (int id) throws PersistenciaExcepcion;
+    
 }

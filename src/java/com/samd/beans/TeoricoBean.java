@@ -16,6 +16,15 @@ public class TeoricoBean {
     private List<Teorico> listaTeoricos;
     private Teorico teorico = new Teorico();
     private List<Teorico> teoricoFiltrado;
+    private List<Teorico> listaTeoricosIdTema;
+
+    public List<Teorico> getListaTeoricosIdTema(int id) throws PersistenciaExcepcion {
+        return listaTeoricosIdTema = fachada.listarTeoricosPorId(id);
+    }
+
+    public void setListaTeoricosIdTema(List<Teorico> listaTeoricosIdTema) {
+        this.listaTeoricosIdTema = listaTeoricosIdTema;
+    }
 
     public List<Teorico> getTeoricoFiltrado() {
         return teoricoFiltrado;
@@ -28,6 +37,7 @@ public class TeoricoBean {
     public List<Teorico> getListaTeoricos() throws PersistenciaExcepcion {
         return fachada.listarTeoricos();
     }
+    
 
     public void setListaTeoricos(List<Teorico> listaTeoricos) {
         this.listaTeoricos = listaTeoricos;

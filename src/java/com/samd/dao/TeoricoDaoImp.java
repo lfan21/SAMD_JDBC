@@ -205,4 +205,40 @@ public class TeoricoDaoImp extends Conexion implements TeoricoDao {
 
     }
 
+    @Override
+    public List<Teorico> listarTeoricosPorId(int id) throws PersistenciaExcepcion {
+         List<Teorico> retorno = null;
+        ResultSet rs;
+        Statement st;
+
+        try {
+            String consulta = "SELECT * FROM Teorico WHERE TEMAS_idTema ="+id;
+            this.conectar();
+            st = this.getConn().createStatement();
+            rs = st.executeQuery(consulta);
+            retorno = new ArrayList<>();
+            while (rs.next()) {
+                Teorico teorico = new Teorico();
+                teorico.setIdTeorico(rs.getInt("idTeorico"));
+                teorico.setTitulo(rs.getString("titulo"));
+                teorico.setContenido(rs.getString("contenido"));
+                teorico.setIdTema(rs.getInt("TEMAS_idTema"));
+                teorico.setEstado(rs.getInt("estado"));
+                retorno.add(teorico);
+            }
+
+            rs.close();
+            st.close();
+
+        } catch (SQLException e) {
+            throw new PersistenciaExcepcion("No se ha podido listar el teórico");
+
+        } finally {
+            this.cerrarConexion();
+        }
+
+        return retorno;
+        
+    }
+
 }
