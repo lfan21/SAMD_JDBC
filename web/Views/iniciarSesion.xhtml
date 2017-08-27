@@ -19,10 +19,10 @@
             <h:form>
                 <h:panelGrid columns="2" style="margin: 0 auto ">                   
                     <p:outputLabel for="usuario" value="Usuario: " />            
-                    <p:inputText id="usuario" value="#{inicioSesionBean.usuario.cedula}" required="true"/>            
+                    <p:inputText id="usuario" value="#{inicioSesionControlador.usuario.cedula}" required="true"/>            
                     <p:outputLabel for="contrasenia" value="Contraseña: " />            
-                    <p:password  id="contrasenia"  value="#{inicioSesionBean.usuario.contrasenia}" required="true" validatorMessage="Por favor ingrese contraseña"/>                      
-                    <p:commandButton  id="ingresar" value="Iniciar Sesión"  style="float:right" action="#{inicioSesionBean.validarDatosUsuario()}"/> 
+                    <p:password  id="contrasenia"  value="#{inicioSesionControlador.usuario.contrasenia}" required="true" validatorMessage="Por favor ingrese contraseña"/>                      
+                    <p:commandButton  id="ingresar" value="Iniciar Sesión"  style="float:right" action="#{inicioSesionControlador.validarDatosUsuario()}"/> 
                 </h:panelGrid>
             </h:form>
 

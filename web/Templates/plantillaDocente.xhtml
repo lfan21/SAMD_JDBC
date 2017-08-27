@@ -17,30 +17,10 @@
             <ui:insert name="top">
                 <h:form>  
                     <p:growl id="messages"/>
+                    
+                    <p:menubar model="#{menuDocenteControlador.menuDocente}" />
 
-                    <p:menubar>
-                        <p:submenu label="Control de Usuario" icon="ui-icon-person">
-
-                            <p:menuitem value="Cambiar Contraseña" icon="ui-icon-plus" url="http://localhost:8084/SAMD2/faces/Views/IngresarTeorico.xhtml" />
-                            <p:menuitem value="Cerrar Sesión" icon="ui-icon-pencil" url="#{inicioSesionBean.cerrarSesion()}?faces-redirect=true"/>
-
-                        </p:submenu>
-
-
-                        <p:submenu label="Evaluación">
-                            <p:menuitem value="Ingreasar Evaluación" icon="ui-icon-plus" url="#" />
-                            <p:menuitem value="Modificar Evaluación" url="#" icon="ui-icon-pencil" />
-                            <p:menuitem value="Eliminar Evaluación" icon="ui-icon-minusthick" url="#" />
-
-                        </p:submenu>
-
-                        <p:submenu label="Calificaciones">
-                            <p:menuitem value="Ver Calificaciones por Alumno" icon="ui-icon-pencil" url=""/>
-                            <p:menuitem value="Ver Calificaciones por Tema" icon="ui-icon-pencil"/>
-                            <p:menuitem value="Estadísticas de Calificaciones" icon="ui-icon-pencil"/>
-                        </p:submenu>
-
-                    </p:menubar>
+                   
                 </h:form>
 
             </ui:insert>

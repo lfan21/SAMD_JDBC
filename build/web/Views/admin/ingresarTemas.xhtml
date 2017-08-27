@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../Templates/plantillaAdministrador.xhtml">
+
+            <ui:define name="content">
+
+                <div id="contenedor">
+                    <h:form>         
+
+                        <p:growl id="mensajeTema" autoUpdate="true" showDetail="true"/>
+                        <h:panelGrid columns="2" cellpadding="5">
+
+                            <h3>Nombre:</h3>
+
+                            <p:inputText id="nombreTema" value="#{temaControlador.tema.nombre}" required="true"/>
+
+                            <h3>Descripción: </h3>
+                            <p:inputTextarea id="descripcion" rows="4" cols="40" value="#{temaControlador.tema.descripcion}" required="true"/>
+
+                            <h:panelGrid columns="2" style="margin-top: 10px">
+
+                                <p:commandButton value="Guardar" actionListener="#{temaControlador.ingresartTema()}" />
+                                <p:commandButton value="Limpiar Campos" type="reset" />
+
+                            </h:panelGrid>
+
+                        </h:panelGrid>
+
+                    </h:form>
+
+                </div>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

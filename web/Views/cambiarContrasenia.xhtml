@@ -24,7 +24,7 @@
                     <h:panelGrid columns="2" cellpadding="5">
 
                         <p:outputLabel for="contraseniaAnterior" value="Ingrese contraseña anterior" />
-                        <p:password id="contraseniaAnterior" value="#{cambiarContrasenia.nuevaContrasenia}" required="true" />
+                        <p:password id="contraseniaAnterior" value="#{cambiarContraseniaControlador.nuevaContrasenia}" required="true" />
 
                         <p:outputLabel for="nuevaContrasenia" value="Ingrese nueva contraseña" />
                         <p:password id="nuevaContrasenia" match="confContrasenia"  validatorMessage="No coinciden las contraseñas" value="" required="true" feedback="true" inline="true" promptLabel="Nueva Contraseña" weakLabel="Débil" goodLabel="Normal" strongLabel="Fuerte"/>
@@ -32,7 +32,7 @@
                         <p:outputLabel for="confContrasenia" value="Confirmar nueva contraseña" />
                         <p:password id="confContrasenia" value=""  required="true" feedback="true" inline="true" promptLabel="Nueva Contraseña" weakLabel="Débil" goodLabel="Normal" strongLabel="Fuerte"/>
 
-                        <p:commandButton value="Cambiar" actionListener="#{cambiarContrasenia.cambiarContrasenia()}"/>
+                        <p:commandButton value="Cambiar" actionListener="#{cambiarContraseniaControlador.cambiarContrasenia()}"/>
                        
                     </h:panelGrid>
 

@@ -20,16 +20,16 @@
                     <h:panelGrid columns="2" style="margin: 0 auto "> 
 
                         <p:outputLabel for="usuario" value="Usuario: " />            
-                        <p:inputText id="usuario" required="true" value="#{olvidoContrasenia.cedula}"/> 
+                        <p:inputText id="usuario" required="true" value="#{olvidoContraseniaMailControlador.cedula}"/> 
 
                         <p:outputLabel  for="correo" value="Correo: " />            
-                        <p:inputText   id="correo" required="true" value="#{olvidoContrasenia.correo}"/>
+                        <p:inputText   id="correo" required="true" value="#{olvidoContraseniaMailControlador.correo}"/>
 
                         <p:outputLabel  for="repetirCorreo" value="Repetir Correo: " />            
                         <p:inputText id="repetirCorreo" required="true"/>
 
 
-                        <p:commandButton  id="resetear" value="Resetear"  actionListener="#{olvidoContrasenia.actualizarContraseniaCorreo()}"/> 
+                        <p:commandButton  id="resetear" value="Resetear"  actionListener="#{olvidoContraseniaMailControlador.actualizarContraseniaCorreo()}"/> 
 
 
 
