@@ -33,7 +33,7 @@ public class MenuDocenteControlador {
 
         DefaultMenuItem cerrarSesion = new DefaultMenuItem("Cerrar Sesión");
         cerrarSesion.setIcon("ui-icon-circlesmall-close");
-        cerrarSesion.setCommand("#{inicioSesionControlador.cerrarSesion()}");
+        cerrarSesion.setCommand("#{inicioSesionBean.cerrarSesion()}");
 
         menuUsuario.addElement(cambiarClave);
         menuUsuario.addElement(cerrarSesion);
@@ -46,83 +46,77 @@ public class MenuDocenteControlador {
         menuAdministracionTemas.setIcon("ui-icon-document");
 
         // Menu de Tema
-        DefaultSubMenu menuTema = new DefaultSubMenu("Tema");
-        menuTema.setIcon("ui-icon-document-b");
-        menuAdministracionTemas.addElement(menuTema);
+        DefaultSubMenu item = new DefaultSubMenu("Tema");
+        item.setIcon("ui-icon-document-b");
+        menuAdministracionTemas.addElement(item);
 
         // Sub Menu Ingresar Tema 
-        DefaultMenuItem menuItemIngresartemas = new DefaultMenuItem("Ingresar Tema");
-        menuItemIngresartemas.setIcon("ui-icon-plus");
-        menuItemIngresartemas.setUrl("/Views/docente/ingresarTemas.xhtml");
-        menuTema.addElement(menuItemIngresartemas);
+        DefaultMenuItem itemTema = new DefaultMenuItem("Ingresar Tema");
+        itemTema.setIcon("ui-icon-plus");
+        itemTema.setUrl("/Views/docente/ingresarTema.xhtml");
+        item.addElement(itemTema);
 
         //Sub Menu Buscar Temas
-        DefaultMenuItem menuItemGestionarTemas = new DefaultMenuItem("Gestionar Temas");
-        menuItemGestionarTemas.setIcon("ui-icon-plus");
-        menuItemGestionarTemas.setUrl("/Views/docente/gestionarTemas.xhtml");
-        menuTema.addElement(menuItemGestionarTemas);
+        DefaultMenuItem itemBuscoTema = new DefaultMenuItem("Gestionar Temas");
+        itemBuscoTema.setIcon("ui-icon-plus");
+        itemBuscoTema.setUrl("/Views/docente/gestionarTemas.xhtml");
+        item.addElement(itemBuscoTema);
 
-        menuDocente.addElement(menuAdministracionTemas);
-
-//        //*********************************************************************************************************
-//        //Menu de Teoricos
-        DefaultSubMenu menuAdministracionTeorico = new DefaultSubMenu("Teorico");
-        menuAdministracionTeorico.setIcon("ui-icon-document-b");
-        menuAdministracionTemas.addElement(menuAdministracionTeorico);
+        //*********************************************************************************************************
+        //Menu de Teoricos
+        DefaultSubMenu itemTeorico = new DefaultSubMenu("Teorico");
+        itemTeorico.setIcon("ui-icon-document-b");
+        menuAdministracionTemas.addElement(itemTeorico);
 
         // Sub Menu Ingresar Contenidos Teoricos de Temas 
-        DefaultMenuItem menuIngresarTeoricos = new DefaultMenuItem("Ingresar Teoricos");
-        menuIngresarTeoricos.setIcon("ui-icon-plus");
-        menuIngresarTeoricos.setUrl("/Views/docente/ingresarTeoricos.xhtml");
-        menuAdministracionTeorico.addElement(menuIngresarTeoricos);
+        DefaultMenuItem itemTeoricos = new DefaultMenuItem("Ingresar Teoricos");
+        itemTeoricos.setIcon("ui-icon-plus");
+        itemTeoricos.setUrl("/Views/docente/ingresarTeorico.xhtml");
+        itemTeorico.addElement(itemTeoricos);
 
         //Sub Menu Gestionar Teoricos Ingresados
-        DefaultMenuItem menuGestionarTeoricos = new DefaultMenuItem("Gestionar Teoricos");
-        menuGestionarTeoricos.setIcon("ui-icon-plus");
-        menuGestionarTeoricos.setUrl("/Views/docente/gestionarTeoricos.xhtml");
-        menuAdministracionTeorico.addElement(menuGestionarTeoricos);
+        DefaultMenuItem itemBuscoTeorico = new DefaultMenuItem("Gestionar Teoricos");
+        itemBuscoTeorico.setIcon("ui-icon-plus");
+        itemBuscoTeorico.setUrl("/Views/docente/gestionarTeorico.xhtml");
+        itemTeorico.addElement(itemBuscoTeorico);
 
-        menuDocente.addElement(menuAdministracionTeorico);
-
-//        //*************************************************************************************************************
-//        //Menu de Preguntas
-        DefaultSubMenu menuAdministracionPreguntas = new DefaultSubMenu("Preguntas");
-        menuAdministracionPreguntas.setIcon("ui-icon-document-b");
-        menuAdministracionTemas.addElement(menuAdministracionPreguntas);
+        //*************************************************************************************************************
+        //Menu de Preguntas
+        DefaultSubMenu itemPregunta = new DefaultSubMenu("Preguntas");
+        itemPregunta.setIcon("ui-icon-document-b");
+        menuAdministracionTemas.addElement(itemPregunta);
 
         // Sub Menu Ingresar Preguntas 
-        DefaultMenuItem menuIngresarPreguntas = new DefaultMenuItem("Ingresar Preguntas");
-        menuIngresarPreguntas.setIcon("ui-icon-plus");
-        menuIngresarPreguntas.setUrl("/Views/docente/ingresarPreguntas.xhtml");
-
-        menuAdministracionPreguntas.addElement(menuIngresarPreguntas);
+        DefaultMenuItem itemPreguntas = new DefaultMenuItem("Ingresar Preguntas");
+        itemPreguntas.setIcon("ui-icon-plus");
+        itemPreguntas.setUrl("/Views/docente/ingresarPregunta.xhtml");
+        itemPregunta.addElement(itemPreguntas);
 
         //Sub Menu Gestionar Preguntas
-        DefaultMenuItem menuGestionarPreguntas = new DefaultMenuItem("Gestionar Preguntas");
-        menuGestionarPreguntas.setIcon("ui-icon-plus");
-        menuGestionarPreguntas.setUrl("/Views/docente/gestionarPreguntas.xhtml");
+        DefaultMenuItem itemBuscoPreguntas = new DefaultMenuItem("Gestionar Pregunta");
+        itemBuscoPreguntas.setIcon("ui-icon-plus");
+        itemBuscoPreguntas.setUrl("/Views/docente/gestionarPregunta.xhtml");
+        itemPregunta.addElement(itemBuscoPreguntas);
 
-        menuAdministracionPreguntas.addElement(menuIngresarPreguntas);
+        //Menu Evaluacion **********************************************************************************************
+        //Menu de Evaluacion
+        DefaultSubMenu itemEvaluacion = new DefaultSubMenu("Evaluacion");
+        itemEvaluacion.setIcon("ui-icon-document-b");
+        menuAdministracionTemas.addElement(itemEvaluacion);
 
-        menuDocente.addElement(menuAdministracionPreguntas);
-//                
-//
-//        //   Menu Evaluacion **********************************************************************************************
+        //Sub Menu Nueva Evaluacion 
+        DefaultMenuItem itemEvaluaciones = new DefaultMenuItem("Nueva Evaluacion");
+        itemEvaluaciones.setIcon("ui-icon-plus");
+        itemEvaluaciones.setUrl("/Views/docente/ingresarPregunta.xhtml");
+        itemEvaluacion.addElement(itemEvaluaciones);
 
-        DefaultSubMenu menuEvaluaciones = new DefaultSubMenu("Evaluaciones");
-        menuEvaluaciones.setIcon("ui-icon-document");
+        //Sub Menu Gestionar Evaluaciones
+        DefaultMenuItem itemGestionarEvaluaciones = new DefaultMenuItem("Gestionar Evaluaciones");
+        itemGestionarEvaluaciones.setIcon("ui-icon-plus");
+        itemGestionarEvaluaciones.setUrl("/Views/docente/gestionarPregunta.xhtml");
+        itemEvaluacion.addElement(itemGestionarEvaluaciones);
 
-        DefaultMenuItem menuIngresarEvalucion = new DefaultMenuItem("Nueva Evaluacion");
-        menuIngresarEvalucion.setIcon("ui-icon-plus");
-        menuIngresarEvalucion.setUrl("/Views/docente/ingresarPreguntas.xhtml");
-        menuEvaluaciones.addElement(menuIngresarEvalucion);
-
-        DefaultMenuItem menuGestionaEvalucion = new DefaultMenuItem("Gestionar Evaluaciones");
-        menuGestionaEvalucion.setIcon("ui-icon-plus");
-        menuGestionaEvalucion.setUrl("/Views/docente/gestionarPreguntas.xhtml");
-        menuEvaluaciones.addElement(menuGestionaEvalucion);
-
-        menuDocente.addElement(menuEvaluaciones);
+        menuDocente.addElement(menuAdministracionTemas);
 
     }
 

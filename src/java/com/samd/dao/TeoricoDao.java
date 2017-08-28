@@ -24,4 +24,6 @@ public interface TeoricoDao {
     
     public List<Teorico> listarTeoricosPorId (int id) throws PersistenciaExcepcion;
     
+    public boolean exiteTeoricoNombre (Teorico teorico) throws PersistenciaExcepcion;
+    
 }

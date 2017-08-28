@@ -5,7 +5,6 @@ import com.samd.excepciones.UsuarioExcepcion;
 import com.samd.fachada.Fachada;
 import com.samd.modelo.TipoUsuario;
 import com.samd.modelo.Usuario;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -85,27 +84,31 @@ public class AdminUsuariosControlador {
     public void ingresarUsuario() throws UsuarioExcepcion, PersistenciaExcepcion {
 
         if (fachada.existeUsuario(usuario)) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "El usuario ya existe", "Error"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestión de Usuarios", "El usuario ingresado ya existe"));
         } else {
             this.usuario.setIdTipo(idTipoUsuario);
             fachada.ingresarUsuario(usuario);
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario ingresado correctamente", "Exito"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestión de Usuarios", "Usuario ingresado correctamente"));
         }
 
     }
 
-    
-
     public void eliminarUsuario() throws Exception {
         fachada.eliminarUsuario(usuario);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestión de Usuarios", "Usuario eliminado correctamente"));
+
     }
 
     public void modificarUsuario() throws Exception {
         fachada.modificarUsuario(usuario);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestión de Usuarios", "Usuario modificado correctamente"));
+
     }
 
     public void cambiarContrasenia() throws PersistenciaExcepcion {
         fachada.cambiarContrasenia(this.usuario);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestión de Usuarios", "Contraseña cambiada con éxito"));
+
     }
 
 }

@@ -2,10 +2,14 @@ package com.samd.beans;
 
 import com.samd.excepciones.PersistenciaExcepcion;
 import com.samd.fachada.Fachada;
+import com.samd.modelo.Tema;
 import com.samd.modelo.Teorico;
 import java.util.List;
+import java.util.Map;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -13,11 +17,15 @@ public class TeoricoControlador {
 
     private final Fachada fachada;
     private List<Teorico> listaTeoricos;
-    private Teorico teorico = new Teorico();
+    private Teorico teorico;
     private List<Teorico> teoricoFiltrado;
     private List<Teorico> listaTeoricosIdTema;
 
-    public List<Teorico> getListaTeoricosIdTema(int id) throws PersistenciaExcepcion {
+    public List<Teorico> getListaTeoricosIdTema() throws PersistenciaExcepcion {
+
+        Map<String, String> parametro = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        int id = Integer.parseInt(parametro.get("idTema"));
+
         return listaTeoricosIdTema = fachada.listarTeoricosPorId(id);
     }
 
@@ -36,7 +44,6 @@ public class TeoricoControlador {
     public List<Teorico> getListaTeoricos() throws PersistenciaExcepcion {
         return fachada.listarTeoricos();
     }
-    
 
     public void setListaTeoricos(List<Teorico> listaTeoricos) {
         this.listaTeoricos = listaTeoricos;
@@ -52,11 +59,19 @@ public class TeoricoControlador {
 
     public TeoricoControlador() {
         fachada = Fachada.getInstancia();
- 
+        teorico = new Teorico();
+
     }
 
     public void ingresarTeorico() throws PersistenciaExcepcion {
-        fachada.ingresarTeorico(this.teorico);
+
+        if (fachada.exiteTeoricoNombre(teorico)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestión de Teóricos", "El Teórico ya se encuentra ingresado"));
+        } else {
+            fachada.ingresarTeorico(this.teorico);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestión de Teóricos", "Teórico ingresado correctamente"));
+
+        }
 
     }
 

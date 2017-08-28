@@ -18,6 +18,10 @@ public interface TemaDao {
     
     public void modificarTema (Tema tema) throws PersistenciaExcepcion;
     
+    public Boolean existeTemaNombre (Tema tema) throws PersistenciaExcepcion;
+    
+    public Tema retornarTemaPorId(int numero) throws PersistenciaExcepcion;
+    
     
     
 }

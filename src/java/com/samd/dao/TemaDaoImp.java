@@ -2,6 +2,7 @@ package com.samd.dao;
 
 import com.samd.excepciones.PersistenciaExcepcion;
 import com.samd.modelo.Tema;
+import com.samd.modelo.Teorico;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -98,7 +99,7 @@ public class TemaDaoImp extends Conexion implements TemaDao {
                 tema.setNombre(rs.getString("nombre"));
                 tema.setDescripcion(rs.getString("descripcion"));
                 tema.setEstado(rs.getInt("estado"));
-                
+
                 retorno.add(tema);
             }
             st.close();
@@ -161,6 +162,75 @@ public class TemaDaoImp extends Conexion implements TemaDao {
             this.cerrarConexion();;
         }
 
+    }
+
+    @Override
+    public Boolean existeTemaNombre(Tema tema) throws PersistenciaExcepcion {
+
+        Boolean existe = false;
+        ResultSet rs;
+        PreparedStatement ps = null;
+
+        try {
+            String consulta = "SELECT nombre FROM Temas WHERE nombre = ? AND estado=1";
+            this.conectar();
+            ps = this.getConn().prepareStatement(consulta);
+            ps.setString(1, tema.getNombre());
+
+            rs = ps.executeQuery();
+
+            while (rs.next() && !existe) {
+                existe = true;
+            }
+            rs.close();
+            ps.close();
+
+        } catch (SQLException e) {
+            throw new PersistenciaExcepcion("No se ha podido listar el teórico");
+
+        } finally {
+            this.cerrarConexion();
+        }
+
+        return existe;
+
+    }
+
+    @Override
+    public Tema retornarTemaPorId(int numero) throws PersistenciaExcepcion {
+
+        Tema tema = null;
+        ResultSet rs;
+        PreparedStatement ps = null;
+
+        try {
+            String consulta = "SELECT * FROM TEMAS WHERE idTema = ? AND estado=1 ";
+            this.conectar();
+            ps = this.getConn().prepareStatement(consulta);
+            ps.setInt(1, numero);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                tema = new Tema();
+                tema.setIdTema(rs.getInt("idTema"));
+                tema.setNombre(rs.getString("nombre"));
+                tema.setDescripcion(rs.getString("descripcion"));
+                tema.setEstado(rs.getInt("estado"));
+
+            }
+
+            rs.close();
+            ps.close();
+
+        } catch (SQLException e) {
+            throw new PersistenciaExcepcion("No se ha podido listar el teórico");
+
+        } finally {
+            this.cerrarConexion();
+        }
+
+        return tema;
     }
 
 }

@@ -14,9 +14,9 @@
 
                 <h:form>
 
-                    <p:dataList value="#{teoricoControlador.getListaTeoricosIdTema(3)}" var="teorico" itemType="none" paginator="true" rows="2" styleClass="paginated">
+                    <p:dataList value="#{teoricoControlador.getListaTeoricosIdTema()}" var="teorico" itemType="none" paginator="true" rows="3" styleClass="paginated">
                         <f:facet name="header">
-                            Cascada
+                            <h:outputText value="Teórico"/>
                         </f:facet>
 
                         <h2>

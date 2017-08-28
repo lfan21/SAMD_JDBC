@@ -44,21 +44,21 @@
                             </p:column>
 
 
-                            <p:column headerText="Estado">             
+                            <p:column headerText="Estado" filterBy="#{us.estado}" filterMatchMode="contains">             
                                 <h:outputLabel value="#{us.estado}">
                                     <f:converter converterId="estadoConversor"/>
                                 </h:outputLabel>
                             </p:column>
 
 
-                            <p:column headerText="Rol">             
+                            <p:column headerText="Rol" filterBy="#{us.rol}" filterMatchMode="contains">             
                                 <h:outputLabel value="#{us.idTipo}">
 
                                     <f:converter converterId="tipoUsuarioConversor"/>
                                 </h:outputLabel>
                             </p:column>
 
-                            <p:column headerText="Numero Docente" filterBy="#{us.nroDocente}" filterMatchMode="exact">             
+                            <p:column headerText="Nro. Docente" filterBy="#{us.nroDocente}" filterMatchMode="exact">             
                                 <h:outputLabel value="#{us.nroDocente}"/>
                             </p:column>
 

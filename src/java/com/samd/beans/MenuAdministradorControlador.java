@@ -90,7 +90,7 @@ public class MenuAdministradorControlador {
 
         DefaultMenuItem menuItemGestionarTeoricos = new DefaultMenuItem("Gestionar Teóricos");
         menuItemGestionarTeoricos.setIcon("ui-icon-search");
-        menuGestionarUsuarios.setUrl("/Views/admin/gestionarTeoricos.xhtml");
+        menuItemGestionarTeoricos.setUrl("/Views/admin/gestionarTeoricos.xhtml");
         menuTeorico.addElement(menuItemGestionarTeoricos);
 
         menuAdministracionDeContenido.addElement(menuTeorico);

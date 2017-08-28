@@ -188,7 +188,7 @@ public class TeoricoDaoImp extends Conexion implements TeoricoDao {
                 teorico.setContenido(rs.getString("contenido"));
                 teorico.setIdTema(rs.getInt("TEMAS_idTema"));
                 teorico.setEstado(rs.getInt("estado"));
-         
+
             }
 
             rs.close();
@@ -207,12 +207,12 @@ public class TeoricoDaoImp extends Conexion implements TeoricoDao {
 
     @Override
     public List<Teorico> listarTeoricosPorId(int id) throws PersistenciaExcepcion {
-         List<Teorico> retorno = null;
+        List<Teorico> retorno = null;
         ResultSet rs;
         Statement st;
 
         try {
-            String consulta = "SELECT * FROM Teorico WHERE TEMAS_idTema ="+id;
+            String consulta = "SELECT * FROM Teorico WHERE TEMAS_idTema =" + id;
             this.conectar();
             st = this.getConn().createStatement();
             rs = st.executeQuery(consulta);
@@ -238,7 +238,39 @@ public class TeoricoDaoImp extends Conexion implements TeoricoDao {
         }
 
         return retorno;
-        
+
+    }
+
+    @Override
+    public boolean exiteTeoricoNombre(Teorico teorico) throws PersistenciaExcepcion {
+
+        Boolean existe = false;
+        ResultSet rs;
+        PreparedStatement ps = null;
+
+        try {
+            String consulta = "SELECT titulo FROM Teorico WHERE titulo = ? AND estado=1 ";
+            this.conectar();
+            ps = this.getConn().prepareStatement(consulta);
+            ps.setString(1, teorico.getContenido());
+
+            rs = ps.executeQuery();
+
+            while (rs.next()&&!existe) {
+                existe = true;
+            }
+            rs.close();
+            ps.close();
+
+        } catch (SQLException e) {
+            throw new PersistenciaExcepcion("No se ha podido listar el teórico");
+
+        } finally {
+            this.cerrarConexion();
+        }
+
+        return existe;
+
     }
 
 }

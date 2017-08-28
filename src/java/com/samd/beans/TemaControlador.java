@@ -5,8 +5,10 @@ import com.samd.fachada.Fachada;
 import com.samd.modelo.Tema;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
 @ManagedBean
@@ -18,6 +20,7 @@ public class TemaControlador {
     private List<SelectItem> listaComboTipoTema;
     private List<Tema> listaTemas;
     private List<Tema> temaFiltrado;
+
 
     public List<Tema> getListaTemas() throws PersistenciaExcepcion {
         return fachada.listarTemas();
@@ -58,7 +61,7 @@ public class TemaControlador {
     public TemaControlador() {
         fachada = Fachada.getInstancia();
         tema = new Tema();
-        listaComboTipoTema =new ArrayList<>();
+        listaComboTipoTema = new ArrayList<>();
         listaTemas = new ArrayList<>();
     }
 
@@ -72,7 +75,13 @@ public class TemaControlador {
 
     public void ingresartTema() throws Exception {
 
-        fachada.ingresarTema(this.tema);
+        if (fachada.existeTemaNombre(tema)) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestión de Temas", "El tema ya se encuentra ingresado"));
+        } else {
+            fachada.ingresarTema(this.tema);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Gestión de Temas", "Tema ingresado correctamente"));
+
+        }
 
     }
 

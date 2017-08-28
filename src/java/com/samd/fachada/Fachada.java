@@ -144,6 +144,18 @@ public class Fachada {
         TemaDao temaDao = new TemaDaoImp();
         temaDao.modificarTema(tema);
     }
+    
+    public Boolean existeTemaNombre(Tema tema) throws PersistenciaExcepcion{
+        
+        TemaDao temaDao = new TemaDaoImp();
+        return temaDao.existeTemaNombre(tema);
+    }
+    
+    public Tema retornarTemaPorId (int numero) throws PersistenciaExcepcion{
+        TemaDao temaDao = new TemaDaoImp();
+        return temaDao.retornarTemaPorId(numero);
+        
+    }
 
 //*********************************** Fin Administración de Temas *****************************************
 //*********************************** Administraciòn de Teorico********************************************
@@ -188,6 +200,13 @@ public class Fachada {
         TeoricoDao teoricoDao = new TeoricoDaoImp();
         return teoricoDao.retornarTeoricoPorId(numero);
 
+    }
+    
+    public Boolean exiteTeoricoNombre (Teorico teorico) throws PersistenciaExcepcion{
+        
+        TeoricoDao teoricoDao = new TeoricoDaoImp();
+        return teoricoDao.exiteTeoricoNombre(teorico);
+        
     }
 //********************************** Gestion Preguntas ****************************************************
 
